@@ -9,11 +9,11 @@ interface RobotProps {
 
 const Robot: React.FC<RobotProps> = ({ id, name, email }) => {
   return (
-    <li className={styles.li}>
+    <div className={styles.cardContainer}>
       <img alt="robot" src={`https://robohash.org/${id}`} />
       <h2>{name}</h2>
       <p>{email}</p>
-    </li>
+    </div>
   );
 };
 

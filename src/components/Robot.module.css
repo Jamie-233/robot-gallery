@@ -1,3 +1,15 @@
-.li {
-  list-style-type: none;
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #00bdab;
+  border: 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+  backface-visibility: hidden;
+}
+
+.cardContainer:hover {
+  transform: scale(1.05);
 }
