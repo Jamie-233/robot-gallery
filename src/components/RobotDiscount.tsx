@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './Robot.module.css';
 import { appContext } from '../AppState';
-import { withAddToCart } from './AddToCart';
+import { useAddToCart } from './AddToCart';
 
 export interface RobotProps {
   id: number;
@@ -10,8 +10,9 @@ export interface RobotProps {
   addToCart: (id, name) => void;
 }
 
-const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
+const Robot: React.FC<RobotProps> = ({ id, name, email }) => {
   const value = useContext(appContext);
+  const addToCart = useAddToCart();
 
   return (
     <div className={styles.cardContainer}>
@@ -25,4 +26,4 @@ const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
   );
 };
 
-export default withAddToCart(Robot);
+export default Robot;
