@@ -17,7 +17,7 @@ const App: React.FC = () => {
         const response = await fetch(
           'https://jsonplaceholder.typicode.com/users',
         );
-        const data = response.json();
+        const data = await response.json();
         setRobotGallery(data);
       } catch (e) {
         setError(e);
@@ -41,7 +41,7 @@ const App: React.FC = () => {
 
       {!loading ? (
         <div className={styles.robotList}>
-          {robotGallery.map((r, index) =>
+          {robotGallery?.map((r, index) =>
             index % 2 === 0 ? (
               <RobotDiscount
                 key={r.id}
