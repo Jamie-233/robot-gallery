@@ -5,27 +5,27 @@ import ShoppingCart from './components/ShoppingCart';
 import styles from './App.module.css';
 import logo from './logo.svg';
 
-interface Props {}
-
-interface State {
-  robotGallery: any[];
-  count: number;
-}
-
-const App: React.FC = (props) => {
-  const [count, setCount] = useState<number>(0);
+const App: React.FC = () => {
   const [robotGallery, setRobotGallery] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('data', data);
-
+    const featchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          'https://jsonplaceholder.typicode.com/users',
+        );
+        const data = response.json();
         setRobotGallery(data);
-      });
+      } catch (e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
+
+    featchData();
   }, []);
 
   return (
@@ -34,8 +34,11 @@ const App: React.FC = (props) => {
         <img src={logo} alt="logo" className={styles.appLogo} />
         <h1>Robot Online</h1>
       </div>
+
       <ShoppingCart />
+
       {(!error || error !== '') && <div>Oops</div>}
+
       {!loading ? (
         <div className={styles.robotList}>
           {robotGallery.map((r, index) =>

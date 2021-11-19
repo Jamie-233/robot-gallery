@@ -9,7 +9,7 @@ interface State {
 }
 
 class ShoppingCard extends React.Component<Props, State> {
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       isOpen: false,

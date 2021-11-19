@@ -6,7 +6,7 @@ export const withAddToCart = (
   ChildComponent: React.ComponentType<RobotProps>,
 ) => {
   // return class extends React.Component {}
-  return (props: any) => {
+  return (props) => {
     const setState = useContext(appSetStateContext);
 
     const addToCart = (id: number, name: string) => {
@@ -29,7 +29,7 @@ export const withAddToCart = (
 export const useAddToCart = () => {
   const setState = useContext(appSetStateContext);
 
-  const addToCart = (id: number, name: string) => {
+  const addToCart = (id, name) => {
     if (setState) {
       setState((state) => {
         return {

@@ -7,7 +7,7 @@ export interface RobotProps {
   id: number;
   name: string;
   email: string;
-  addToCart: (id, name) => void;
+  addToCart?: (id, name) => void;
 }
 
 const Robot: React.FC<RobotProps> = ({ id, name, email }) => {
